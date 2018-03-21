@@ -14,7 +14,7 @@
     "copy-assets": "mkdir -p ./public && cp -R ./client/build/* ./public",
     "compile-server": "rm -rf ./dist && babel server --out-dir dist",
     "pre-deploy": "npm run compile-server && npm run build-client && npm run clean-assets && npm run copy-assets",
-    "start": "node ./dist/index"
+    "start": "node ./app/dist/index"
   },
   "keywords": [],
   "author": "",
