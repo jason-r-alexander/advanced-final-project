@@ -1,5 +1,6 @@
-const express = require("express");
-const {list,show,create,update,remove} = require("../controllers/ApplicationController");
+import express from "express";
+import {list,show,create,update,remove} from "../controllers/ApplicationController";
+
 const router = express.Router();
 
 
@@ -9,4 +10,4 @@ router.post("/applications", create);
 router.put("/applications/:id", update);
 router.delete("/applications/:id", remove);
 
-module.exports = router;
+export default router;
