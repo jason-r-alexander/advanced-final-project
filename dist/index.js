@@ -5,14 +5,16 @@
 require("dotenv").config();
 var express = require("express");
 var bodyParser = require("body-parser");
+
 var mongoose = require("mongoose");
-var userRoutes = require("./routes/UserRoutes");
-var sessionRoutes = require("./routes/SessionRoutes");
-var authenticationRoutes = require("./routes/AuthenticationRoutes");
+//const userRoutes = require("./routes/UserRoutes");
+//const sessionRoutes = require("./routes/SessionRoutes");
+//const authenticationRoutes = require("./routes/AuthenticationRoutes");
+var applicationRoutes = require("./routes/ApplicationRoutes");
 
 mongoose.set("debug", true);
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://jwoo:jwoo@ds147668.mlab.com:47668/aca-test");
+mongoose.connect("mongodb://jalexander:jalexander@ds113179.mlab.com:13179/final-project");
 
 var app = express();
 
@@ -22,9 +24,10 @@ app.get("/publicinformation", function (req, res) {
 
 app.use(express.static("public"));
 app.use(bodyParser.json());
-app.use(userRoutes);
-app.use(sessionRoutes);
-app.use(authenticationRoutes);
+//app.use(userRoutes);
+//app.use(sessionRoutes);
+//app.use(authenticationRoutes);
+app.use(applicationRoutes);
 
 app.get("/canigetthis", function (req, res) {
   res.send("You got the data. You are authenticated");
