@@ -1,16 +1,20 @@
 // dotenv allows us to declare environment variables in a .env file, \
 // find out more here https://github.com/motdotla/dotenv
-require("dotenv").config();
+require("dotenv").config(); 
 const express = require("express");
 const bodyParser = require("body-parser");
+
+
+
 const mongoose = require("mongoose");
-const userRoutes = require("./routes/UserRoutes");
-const sessionRoutes = require("./routes/SessionRoutes");
-const authenticationRoutes = require("./routes/AuthenticationRoutes");
+//const userRoutes = require("./routes/UserRoutes");
+//const sessionRoutes = require("./routes/SessionRoutes");
+//const authenticationRoutes = require("./routes/AuthenticationRoutes");
+const applicationRoutes = require("./routes/ApplicationRoutes");
 
 mongoose.set("debug", true);
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://jwoo:jwoo@ds147668.mlab.com:47668/aca-test");
+mongoose.connect("mongodb://jalexander:jalexander@ds113179.mlab.com:13179/final-project");
 
 const app = express();
 
@@ -20,9 +24,10 @@ app.get("/publicinformation", function (req, res) {
 
 app.use(express.static("public"));
 app.use(bodyParser.json());
-app.use(userRoutes);
-app.use(sessionRoutes);
-app.use(authenticationRoutes);
+//app.use(userRoutes);
+//app.use(sessionRoutes);
+//app.use(authenticationRoutes);
+app.use(applicationRoutes);
 
 app.get("/canigetthis", function (req, res) {
   res.send("You got the data. You are authenticated");

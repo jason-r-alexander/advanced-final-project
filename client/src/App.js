@@ -1,98 +1,58 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
-import SignUpSignIn from "./SignUpSignIn";
-import TopNavbar from "./TopNavbar";
-import Secret from "./Secret";
+//import Main from "./components/Main";
+import LeftDrawer from "./components/LeftDrawer";
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      signUpSignInError: "",
-      authenticated: localStorage.getItem("token") || false
-    };
-    this.handleSignIn = this.handleSignIn.bind(this);
-    this.handleSignOut = this.handleSignOut.bind(this);
-    this.handleSignUp = this.handleSignUp.bind(this);
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import {Link} from "react-router-dom";
+
+import ApplicationContainer from "./containers/ApplicationContainer";
+import ApplicationsContainer from "./containers/ApplicationsContainer";
+import CreateThingsContainer from "./containers/CreateThingsContainer";
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AppBar from 'material-ui/AppBar';
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {open: false};
   }
 
-  handleSignUp(credentials) {
-    const { username, password, confirmPassword } = credentials;
-    if (!username.trim() || !password.trim() ) {
-      this.setState({
-        signUpSignInError: "Must Provide All Fields"
-      });
-    } else {
-
-      fetch("/users", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(credentials)
-      }).then((res) => {
-        return res.json();
-      }).then((data) => {
-        const { token } = data;
-        localStorage.setItem("token", token);
-        this.setState({
-          signUpSignInError: "",
-          authenticated: token
-        });
-      });
-    }
+  componentDidMount() {
+    this.props.loadApplications();
   }
 
-  handleSignIn(credentials) {
-    // Handle Sign Up
+  handleTouchMap() {
+    this.setState({open: !this.state.open});
   }
 
-  handleSignOut() {
-    localStorage.removeItem("token");
-    this.setState({
-      authenticated: false
-    });
-  }
-
-  renderSignUpSignIn() {
-    return (
-      <SignUpSignIn 
-        error={this.state.signUpSignInError} 
-        onSignUp={this.handleSignUp} 
-      />
-    );
-  }
-
-  renderApp() {
-    return (
-      <div>
-        <Switch>
-          <Route exact path="/" render={() => <h1>I am protected!</h1>} />
-          <Route exact path="/secret" component={Secret} />
-          <Route render={() => <h1>NOT FOUND!</h1>} />
-        </Switch>
-      </div>
-    );
+  handleClose () {
+    this.setState({open: false});
   }
 
   render() {
-    let whatToShow = "";
-    if (this.state.authenticated) {
-      whatToShow = this.renderApp();
-    } else {
-      whatToShow = this.renderSignUpSignIn();
-    }
-       
     return (
-      <BrowserRouter>
-        <div className="App">
-          <TopNavbar 
-            showNavItems={this.state.authenticated} 
-            onSignOut={this.handleSignOut} />
-          {whatToShow}
-        </div>
-      </BrowserRouter>
+      <div>
+
+        <MuiThemeProvider>
+          <BrowserRouter>
+          <div>
+            <AppBar 
+              title="Online Application"
+              onLeftIconButtonClick = { this.handleTouchMap.bind(this) }
+              onTitleClick = {this.handleClose.bind(this)}
+            />
+            <LeftDrawer open={this.state.open} close={this.handleClose.bind(this)} />
+              <Route path="/application/:id" component={ApplicationContainer} />
+              <Route path="/applications" component={ApplicationsContainer} />
+              <Route path="/apply" component={CreateThingsContainer} />
+          </div>
+          </BrowserRouter>
+        </MuiThemeProvider>
+
+      </div>
     );
   }
 }
-
-export default App;
+export default (App);
