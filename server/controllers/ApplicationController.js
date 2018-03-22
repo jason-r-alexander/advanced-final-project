@@ -1,6 +1,6 @@
 const ApplicationModel = require("../models/Application");
 
-export function list(request, response) {
+module.exports = function list(request, response) {
     //For Array
     //return response.json(comments);
 
@@ -10,7 +10,7 @@ export function list(request, response) {
         return response.json(applications);
     });
 }
-export function show(request, response) {
+module.exports = function show(request, response) {
     //For Array
     //return response.json(comments.find(comment => comment._id == request.params.id) || {});
     
@@ -20,7 +20,7 @@ export function show(request, response) {
       return response.json(application);
     });
 }
-export function create(request, response) {
+module.exports = function create(request, response) {
     //For Array
     //    comments.push(request.body);
     //return response.json({});
@@ -32,10 +32,10 @@ export function create(request, response) {
         return response.json(application);
       });
 }
-export function update(request, response) {
+module.exports = function update(request, response) {
     return response.json({theId: request.params.id});
 }
-export function remove(request, response) {
+module.exports = function remove(request, response) {
     //return response.json({});
     /*
     ApplicationModel.remove(request.params.id).exec()
