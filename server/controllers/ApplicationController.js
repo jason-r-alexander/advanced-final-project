@@ -1,4 +1,4 @@
-import ApplicationModel from "../models/Application";
+const ApplicationModel = require("../models/Application");
 
 export function list(request, response) {
     //For Array
