@@ -36,7 +36,7 @@ app.use(bodyParser.json());
 //app.use(userRoutes);
 //app.use(sessionRoutes);
 //app.use(authenticationRoutes);
-app.use(applicationRoutes);
+app.use('/', applicationRoutes);
 
 /*
 app.get("/canigetthis", function (req, res) {
