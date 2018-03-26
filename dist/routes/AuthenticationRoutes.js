@@ -10,3 +10,4 @@ var router = express.Router();
 router.use(authentication);
 
 module.exports = router;
+//module.exports = {router: express.Router() };

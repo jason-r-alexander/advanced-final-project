@@ -49,9 +49,11 @@ function remove(req, res) {
     });
 }
 
-
-exports.list = list;
-exports.show = show;
-exports.create = create;
-exports.update = update;
-exports.remove = remove;
+ 
+module.exports = {
+    list: list,
+    show: show,
+    create: create,
+    update: update,
+    remove: remove
+}
