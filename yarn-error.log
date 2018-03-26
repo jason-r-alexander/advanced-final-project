@@ -1,14 +1,14 @@
 Arguments: 
-  /usr/local/Cellar/node/8.6.0/bin/node /usr/local/bin/yarn start
+  /usr/local/Cellar/node/9.9.0/bin/node /usr/local/bin/yarn start
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 Yarn version: 
-  1.1.0
+  1.5.1
 
 Node version: 
-  8.6.0
+  9.9.0
 
 Platform: 
   darwin x64
@@ -29,8 +29,8 @@ npm manifest:
       "copy-assets": "mkdir -p ./public && cp -R ./client/build/* ./public",
       "compile-server": "rm -rf ./dist && babel server --out-dir dist",
       "pre-deploy": "npm run compile-server && npm run build-client && npm run clean-assets && npm run copy-assets",
-      "start": "node index.js"
-    },//"node ./dist/index"
+      "start": "node ./dist/index"
+    },
     "keywords": [],
     "author": "",
     "license": "ISC",
@@ -6628,10 +6628,16 @@ Lockfile:
       window-size "0.1.0"
 
 Trace: 
-  SyntaxError: /Users/jasonalexander/Desktop/ja311/advanced-final-project/package.json: Unexpected token / in JSON at position 631
-      at JSON.parse (<anonymous>)
-      at /usr/local/lib/node_modules/yarn/lib/cli.js:764:59
-      at Generator.next (<anonymous>)
-      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:92:30)
-      at /usr/local/lib/node_modules/yarn/lib/cli.js:103:13
-      at <anonymous>
+  Error: Command failed.
+  Exit code: 1
+  Command: sh
+  Arguments: -c node ./dist/index
+  Directory: /Users/jasonalexander/Desktop/ja311/advanced-final-project
+  Output:
+  
+      at ProcessTermError.MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
+      at new ProcessTermError (/usr/local/lib/node_modules/yarn/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:30281:17)
+      at ChildProcess.emit (events.js:180:13)
+      at maybeClose (internal/child_process.js:936:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:220:5)

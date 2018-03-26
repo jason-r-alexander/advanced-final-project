@@ -11,6 +11,7 @@ import mongoose from "mongoose";
 import passport from "passport";
 
 import applicationRoutes from "./routes/ApplicationRoutes";
+//var applicationRoutes = require("./routes/ApplicationRoutes");
 
 
 /* const mongoose = require("mongoose"); */

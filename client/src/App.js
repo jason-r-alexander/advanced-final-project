@@ -4,7 +4,7 @@ import "./App.css";
 import LeftDrawer from "./components/LeftDrawer";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 
 import ApplicationContainer from "./containers/ApplicationContainer";
 import ApplicationsContainer from "./containers/ApplicationsContainer";
