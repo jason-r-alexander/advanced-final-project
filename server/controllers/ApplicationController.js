@@ -50,8 +50,8 @@ function remove(req, res) {
 }
 
 
-module.exports.list = list;
-module.exports.show = show;
-module.exports.create = create;
-module.exports.update = update;
-module.exports.remove = remove;
+exports.list = list;
+exports.show = show;
+exports.create = create;
+exports.update = update;
+exports.remove = remove;
