@@ -1,6 +1,6 @@
 import ApplicationModel from "../models/Application";
 
-export function list(req, res) {
+function list(req, res) {
     //For Array
     //return response.json(comments);
 
@@ -10,7 +10,7 @@ export function list(req, res) {
         return res.json(applications);
     });
 }
-export function show(req, res) {
+function show(req, res) {
     //For Array
     //return response.json(comments.find(comment => comment._id == request.params.id) || {});
     
@@ -20,7 +20,7 @@ export function show(req, res) {
       return res.json(application);
     });
 }
-export function create(req, res) {
+function create(req, res) {
     //For Array
     //    comments.push(request.body);
     //return response.json({});
@@ -32,10 +32,10 @@ export function create(req, res) {
         return res.json(application);
       });
 }
-export function update(req, res) {
+function update(req, res) {
     return res.json({theId: req.params.id});
 }
-export function remove(req, res) {
+function remove(req, res) {
     //return response.json({});
     /*
     ApplicationModel.remove(request.params.id).exec()
@@ -48,3 +48,10 @@ export function remove(req, res) {
       return res.json(application);
     });
 }
+
+
+module.exports.list = list;
+module.exports.show = show;
+module.exports.create = create;
+module.exports.update = update;
+module.exports.remove = remove;

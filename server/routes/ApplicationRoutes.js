@@ -10,4 +10,4 @@ router.post("/applications", create);
 router.put("/applications/:id", update);
 router.delete("/applications/:id", remove);
 
-export default router;
+module.exports = router;
